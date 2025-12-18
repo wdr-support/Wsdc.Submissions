@@ -1,0 +1,11 @@
+/* Hide the definition selector dropdown since there is only one API version */
+.swagger-ui .topbar .download-url-wrapper {
+    display: none;
+}
+
+/* Hide the Swagger logo in the header */
+.swagger-ui .topbar-wrapper img,
+.swagger-ui .topbar-wrapper svg {
+    display: none;
+}
+
