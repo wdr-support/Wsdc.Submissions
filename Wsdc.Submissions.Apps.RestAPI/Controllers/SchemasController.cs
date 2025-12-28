@@ -27,7 +27,7 @@ public class SchemasController : ControllerBase
     /// <returns>JSON schema for event data validation</returns>
     /// <response code="200">Schema retrieved successfully</response>
     [HttpGet("results")]
-    [Produces("application/json")]
+    [Produces("application/json", "application/xml")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public IActionResult GetEventDataSchema()
     {

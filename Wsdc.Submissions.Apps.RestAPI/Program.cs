@@ -43,6 +43,7 @@ try
     /////////////////////////////////////////////
 
     builder.Services.AddControllers()
+        .AddXmlSerializerFormatters()
         .AddJsonOptions(options =>
         {
             options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
@@ -117,6 +118,9 @@ try
     // SWAGGER/OPENAPI
     /////////////////////////////////////////////
 
+    //builder.Services.AddControllers()
+    //.AddXmlSerializerFormatters();
+
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen(options =>
     {
@@ -175,6 +179,21 @@ try
     builder.Services.AddScoped<IWsdcSubmissionsValidationService, WsdcSubmissionsValidationService>();
 
     /////////////////////////////////////////////
+    // CORS POLICY
+    /////////////////////////////////////////////
+
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("ExcelAddInPolicy", policy =>
+        {
+            policy.WithOrigins("https://localhost:3000")
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .AllowCredentials();
+        });
+    });
+
+    /////////////////////////////////////////////
     // BUILD APPLICATION
     /////////////////////////////////////////////
 
@@ -206,6 +225,9 @@ try
 
     // HTTPS redirection
     app.UseHttpsRedirection();
+
+    // CORS policy (must be before authentication/authorization)
+    app.UseCors("ExcelAddInPolicy");
 
     // Default files (serve index.html at root) and static files
     app.UseDefaultFiles();

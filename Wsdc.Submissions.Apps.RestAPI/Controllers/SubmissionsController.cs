@@ -36,8 +36,8 @@ public class SubmissionsController : ControllerBase
     /// <response code="200">Validation successful with summary of event data</response>
     /// <response code="400">Invalid request or validation failed</response>
     [HttpPost("validate")]
-    [Consumes("application/json")]
-    [Produces("application/json")]
+    [Consumes("application/json", "application/xml")]
+    [Produces("application/json", "application/xml")]
     [ProducesResponseType(typeof(ServiceResponse<SubmissionResultResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ServiceResponse<SubmissionResultResponse>), StatusCodes.Status400BadRequest)]
     [SwaggerRequestExample(typeof(EventResultsRequest), typeof(EventSubmissionRequestExample))]
@@ -65,8 +65,8 @@ public class SubmissionsController : ControllerBase
     /// <response code="200">Submission completed successfully with summary of submitted data</response>
     /// <response code="400">Invalid request or validation failed</response>
     [HttpPost("submit")]
-    [Consumes("application/json")]
-    [Produces("application/json")]
+    [Consumes("application/json", "application/xml")]
+    [Produces("application/json", "application/xml")]
     [ProducesResponseType(typeof(ServiceResponse<SubmissionResultResponse>), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ServiceResponse<SubmissionResultResponse>), StatusCodes.Status400BadRequest)]
     [SwaggerRequestExample(typeof(EventResultsRequest), typeof(EventSubmissionRequestExample))]
