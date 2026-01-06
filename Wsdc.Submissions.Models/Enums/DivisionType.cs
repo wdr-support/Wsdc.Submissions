@@ -5,6 +5,7 @@ namespace Wsdc.Submissions.Models.Enums;
 /// </summary>
 public enum DivisionType
 {
+    Undefined = 0,
     Newcomer = 1,
     Novice = 2,
     Intermediate = 3,

@@ -46,21 +46,15 @@ public class EventValidator : AbstractValidator<Event>
             .WithErrorCode("INVALID_DATE_RANGE");
 
         // EVENT LOCATION VALIDATION
-        RuleFor(x => x.EventLocation)
+        RuleFor(x => x.VenueName)
             .NotEmpty()
             .WithMessage("Event location is required")
             .WithErrorCode("EVENT_LOCATION_REQUIRED");
 
-        RuleFor(x => x.EventLocation)
+        RuleFor(x => x.VenueName)
             .MaximumLength(ValidationConstants.MaxLocationLength)
             .WithMessage($"Event location must not exceed {ValidationConstants.MaxLocationLength} characters")
             .WithErrorCode("EVENT_LOCATION_TOO_LONG");
-
-        // SCORE CAPTURE TYPE VALIDATION
-        RuleFor(x => x.ScoreCaptureType)
-            .IsInEnum()
-            .WithMessage("Score capture type must be 'Digital' or 'Paper'")
-            .WithErrorCode("INVALID_SCORE_CAPTURE_TYPE");
 
         // STAFF VALIDATION
         RuleFor(x => x.Staff)
@@ -83,17 +77,17 @@ public class EventValidator : AbstractValidator<Event>
             .WithErrorCode("MISSING_CHIEF_JUDGE");
 
         // DIVISIONS VALIDATION
-        RuleFor(x => x.Divisions)
+        RuleFor(x => x.DivisionsRegistry)
             .NotNull()
             .WithMessage("Divisions list is required")
             .WithErrorCode("DIVISIONS_REQUIRED");
 
-        RuleFor(x => x.Divisions)
+        RuleFor(x => x.DivisionsRegistry)
             .NotEmpty()
             .WithMessage("Event must have at least one division")
             .WithErrorCode("NO_DIVISIONS");
 
-        RuleForEach(x => x.Divisions)
+        RuleForEach(x => x.DivisionsRegistry)
             .SetValidator(new DivisionValidator());
     }
 

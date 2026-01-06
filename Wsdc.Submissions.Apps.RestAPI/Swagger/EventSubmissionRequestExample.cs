@@ -30,14 +30,20 @@ public class EventSubmissionRequestExample : IExamplesProvider<EventResultsReque
                 EventName = "The Test Event",
                 EventStartDate = new DateTime(2025, 5, 2, 0, 0, 0, DateTimeKind.Utc),
                 EventEndDate = new DateTime(2025, 5, 4, 0, 0, 0, DateTimeKind.Utc),
-                EventLocation = "The address of the event venue.",
-                ScoreCaptureType = ScoreCaptureType.Digital,
+                VenueName = "The address of the event venue.",
+                VenueAddress1 = "Venue address line 1",
+                VenueAddress2 = "Venue address line 2",
+                VenueCity = "Venue City",
+                VenueCountry = "US",
+                VenuePostalCode = "12345",
+                VenueStateOrProvince = "IL",
                 Staff = CreateStaffList(),
-                Divisions = new List<Division>
+                DivisionsRegistry = new List<Division>
                 {
                     new Division
                     {
                         Type = DivisionType.Novice,
+                        TypeSecondary = DivisionType.Undefined,
                         Rounds = new List<Round>
                         {
                             CreatePrelimRound(),
@@ -73,6 +79,7 @@ public class EventSubmissionRequestExample : IExamplesProvider<EventResultsReque
         return new Round
         {
             Type = RoundType.Prelims,
+            ScoreCaptureType = ScoreCaptureType.Digital,
             Competitors = CreatePrelimCompetitors()
         };
     }
@@ -192,6 +199,7 @@ public class EventSubmissionRequestExample : IExamplesProvider<EventResultsReque
         return new Round
         {
             Type = RoundType.Finals,
+            ScoreCaptureType = ScoreCaptureType.Digital,
             Competitors = CreateFinalCompetitors()
         };
     }

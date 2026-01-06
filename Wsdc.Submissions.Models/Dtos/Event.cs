@@ -27,16 +27,46 @@ public class Event
     public DateTime EventEndDate { get; set; }
 
     /// <summary>
-    /// Venue and address where the event takes place
+    /// Name of the venue / hotel where the event takes place.
     /// </summary>
-    [JsonPropertyName("eventLocation")]
-    public string EventLocation { get; set; } = string.Empty;
+    [JsonPropertyName("venueName")]
+    public string VenueName { get; set; } = string.Empty;
 
     /// <summary>
-    /// Method used to capture scores (Digital or Paper)
+    /// Address line 1 of the venue / hotel where the event takes place.
     /// </summary>
-    [JsonPropertyName("scoreCaptureType")]
-    public ScoreCaptureType ScoreCaptureType { get; set; }
+    [JsonPropertyName("venueAddress1")]
+    public string VenueAddress1 { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Address line 2 of the venue / hotel where the event takes place.
+    /// </summary>
+    [JsonPropertyName("venueAddress2")]
+    public string VenueAddress2 { get; set; } = string.Empty;
+
+    /// <summary>
+    /// City of the venue / hotel where the event takes place.
+    /// </summary>
+    [JsonPropertyName("venueCity")]
+    public string VenueCity { get; set; } = string.Empty;
+
+    /// <summary>
+    /// State / Province of the venue / hotel where the event takes place.
+    /// </summary>
+    [JsonPropertyName("venueStateOrProvince")]
+    public string VenueStateOrProvince { get; set; } = string.Empty;
+
+    /// <summary>
+    /// Postal code of the venue / hotel where the event takes place.
+    /// </summary>
+    [JsonPropertyName("venuePostalCode")]
+    public string VenuePostalCode { get; set; } = string.Empty;
+
+    /// <summary>
+    /// ISO 3166 2 letter country code of the venue / hotel where the event takes place.
+    /// </summary>
+    [JsonPropertyName("venueCountry")]
+    public string VenueCountry { get; set; } = string.Empty;
 
     /// <summary>
     /// List of staff members at the event
@@ -45,9 +75,15 @@ public class Event
     public List<Staff> Staff { get; set; } = new();
 
     /// <summary>
-    /// List of competition divisions at the event
+    /// List of registry divisions at the event
     /// </summary>
-    [JsonPropertyName("divisions")]
-    public List<Division> Divisions { get; set; } = new();
+    [JsonPropertyName("divisionsRegistry")]
+    public List<Division> DivisionsRegistry { get; set; } = new();
+
+    /// <summary>
+    /// List of non registry divisions at the event
+    /// </summary>
+    [JsonPropertyName("divisionsNonRegistry")]
+    public List<string> DivisionsNonRegistry { get; set; } = new();
 }
 

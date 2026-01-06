@@ -15,7 +15,7 @@ public class SubmissionResultBuilder : ISubmissionResultBuilder
     /// <inheritdoc/>
     public SubmissionResultResponse Build(EventResultsRequest request)
     {
-        var divisionSummaries = BuildDivisionSummaries(request.Event.Divisions);
+        var divisionSummaries = BuildDivisionSummaries(request.Event.DivisionsRegistry);
         var principal = Thread.CurrentPrincipal as ClaimsPrincipal;
 
         var response = new SubmissionResultResponse

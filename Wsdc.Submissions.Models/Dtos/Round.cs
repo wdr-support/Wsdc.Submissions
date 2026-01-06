@@ -15,6 +15,12 @@ public class Round
     public RoundType Type { get; set; }
 
     /// <summary>
+    /// Method used to capture scores (Digital or Paper)
+    /// </summary>
+    [JsonPropertyName("scoreCaptureType")]
+    public ScoreCaptureType ScoreCaptureType { get; set; }
+
+    /// <summary>
     /// List of competitors in this round
     /// </summary>
     [JsonPropertyName("competitors")]

@@ -17,6 +17,12 @@ public class RoundValidator : AbstractValidator<Round>
             .WithMessage("Round type must be 'Prelim', 'Quarterfinal', 'Semifinal', or 'Final'")
             .WithErrorCode("INVALID_ROUND_TYPE");
 
+        // SCORE CAPTURE TYPE VALIDATION
+        RuleFor(x => x.ScoreCaptureType)
+            .IsInEnum()
+            .WithMessage("Score capture type must be 'Digital' or 'Paper'")
+            .WithErrorCode("INVALID_SCORE_CAPTURE_TYPE");
+
         // COMPETITORS VALIDATION
         RuleFor(x => x.Competitors)
             .NotNull()
