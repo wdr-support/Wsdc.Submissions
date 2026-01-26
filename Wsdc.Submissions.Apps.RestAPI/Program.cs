@@ -34,9 +34,7 @@ try
     builder.Host.UseSerilog((context, services, configuration) => configuration
         .ReadFrom.Configuration(context.Configuration)
         .ReadFrom.Services(services)
-        .Enrich.FromLogContext()
-        .WriteTo.Console()
-        .WriteTo.File("logs/wsdc-submissions-.txt", rollingInterval: RollingInterval.Day));
+        .Enrich.FromLogContext());
 
     /////////////////////////////////////////////
     // ADD CONTROLLERS
@@ -260,10 +258,19 @@ try
         ?? app.Configuration["urls"]
         ?? "http://localhost:5000";
 
+    var urlList = urls.Split(';', StringSplitOptions.RemoveEmptyEntries);
+
+    Log.Information("===========================================");
     Log.Information("WSDC Submissions API started successfully");
-    Log.Information("Listening on: {Urls}", urls);
-    Log.Information("Swagger UI available at: {SwaggerUrl}", $"{urls.Split(';').First()}/swagger");
+    Log.Information("===========================================");
     Log.Information("Environment: {Environment}", app.Environment.EnvironmentName);
+    Log.Information("Listening on:");
+    foreach (var url in urlList)
+    {
+        Log.Information("  → {Url}", url.Trim());
+    }
+    Log.Information("Swagger UI: {SwaggerUrl}", $"{urlList[0].Trim()}/swagger");
+    Log.Information("===========================================");
 
     app.Run();
 }
