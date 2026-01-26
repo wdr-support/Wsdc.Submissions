@@ -248,7 +248,23 @@ try
     // Map controllers with rate limiting policy
     app.MapControllers().RequireRateLimiting("sliding");
 
+    /////////////////////////////////////////////
+    // LOG STARTUP INFORMATION
+    /////////////////////////////////////////////
+
+    var urls = builder.Configuration["ASPNETCORE_URLS"]
+        ?? builder.Configuration.GetSection("Kestrel:Endpoints")
+            .GetChildren()
+            .Select(endpoint => endpoint["Url"])
+            .FirstOrDefault()
+        ?? app.Configuration["urls"]
+        ?? "http://localhost:5000";
+
     Log.Information("WSDC Submissions API started successfully");
+    Log.Information("Listening on: {Urls}", urls);
+    Log.Information("Swagger UI available at: {SwaggerUrl}", $"{urls.Split(';').First()}/swagger");
+    Log.Information("Environment: {Environment}", app.Environment.EnvironmentName);
+
     app.Run();
 }
 catch (Exception ex)
