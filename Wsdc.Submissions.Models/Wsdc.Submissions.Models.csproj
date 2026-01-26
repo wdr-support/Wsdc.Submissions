@@ -18,7 +18,7 @@
 
   <!-- Generate POCO documentation after build -->
   <Target Name="GeneratePocoDocumentation" AfterTargets="Build">
-    <Exec Command="dotnet run --no-build --project &quot;$(SolutionDir)Wsdc.Submissions.Apps.DocBuilder\Wsdc.Submissions.Apps.DocBuilder.csproj&quot; -- &quot;Wsdc.Submissions.Models&quot;" />
+    <Exec Command="dotnet run --no-build --project &quot;$(SolutionDir)Wsdc.Submissions.Apps.DocBuilder/Wsdc.Submissions.Apps.DocBuilder.csproj&quot; -- &quot;Wsdc.Submissions.Models&quot;" />
   </Target>
 
 </Project>
