@@ -95,6 +95,67 @@ Use this token as your password when pushing commits via HTTPS, or configure it 
 
 ---
 
+### Contribution Workflow
+
+This repository follows a **pull request workflow** with required approvals.
+
+#### Branching Strategy
+
+Create a feature branch from `master` for your changes:
+
+**Branch naming conventions:**
+- `feature/description` — New features
+- `bugfix/description` — Bug fixes
+- `docs/description` — Documentation updates
+- `refactor/description` — Code refactoring
+
+**Example:**
+```bash
+git checkout master
+git pull origin master
+git checkout -b feature/add-validation-rules
+```
+
+#### Making Changes
+
+1. Make your changes and commit with clear messages:
+   ```bash
+   git add .
+   git commit -m "Add validation rules for competitor data"
+   ```
+
+2. Push your branch to GitHub:
+   ```bash
+   git push origin feature/add-validation-rules
+   ```
+
+#### Creating a Pull Request
+
+1. Go to the repository on GitHub
+2. Click **"Compare & pull request"** for your branch
+3. Fill in the PR details:
+   - **Title:** Clear, concise description of changes
+   - **Description:** What changed, why, and any relevant context
+   - Link any related issues
+4. Click **"Create pull request"**
+
+#### Review & Approval
+
+- **Required:** 1 approval from a team member before merging
+- Any team member can review and approve PRs
+- Address any feedback or requested changes
+- Once approved, the PR can be merged
+
+#### Merging
+
+After approval, you or another team member can merge the PR:
+
+1. Click **"Merge pull request"** on GitHub
+2. Choose merge strategy (typically **"Squash and merge"** for clean history)
+3. Delete the branch after merging
+
+---
+
 ## Quick Start
 
 ### 1. Set the Test API Key
